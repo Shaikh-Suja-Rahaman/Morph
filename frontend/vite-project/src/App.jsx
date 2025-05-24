@@ -15,6 +15,7 @@ function App() {
       <Header />
       <Ultra/>
       {/* <Hero /> */}
+      
       {/* <Features />
       <About />
       <CTA />
