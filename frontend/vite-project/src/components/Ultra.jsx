@@ -21,8 +21,8 @@ const Ultra = () => {
       name: "Michael Chen",
       role: "Personal Trainer",
       company: "FitLife Gym",
-      content: "As a trainer, I recommend Morph to all my clients. The AI-powered form analysis is incredibly accurate, and the nutrition tracking makes meal planning effortless.",
-      rating: 5,
+      content: "As a trainer, I recommend Morph to all my clients. The AI-powered form analysis is incredibly accurate",
+      rating: 4,
       avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
     },
     {
@@ -31,7 +31,7 @@ const Ultra = () => {
       role: "Nutritionist",
       company: "Wellness Center",
       content: "The snap-to-track feature is a game changer! My clients love how easy it is to log their meals. It's made nutrition coaching so much more effective and engaging.",
-      rating: 5,
+      rating: 4.5,
       avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
     },
     {
@@ -46,7 +46,7 @@ const Ultra = () => {
   ];
 
   return (
-    <div className="w-screen h-screen bg-gradient-to-br from-black to-purple-950 flex items-center justify-center p-0 m-0">
+    <div className="w-screen h-screen flex items-center justify-center p-0 m-0">
       <div className="flex items-center justify-between w-[95%] max-w-7xl gap-20">
         {/* Text Section */}
         <div className="flex-1 max-w-xl">
