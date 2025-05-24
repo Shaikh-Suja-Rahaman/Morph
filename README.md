@@ -3,6 +3,12 @@
 **Morph** is a web-based AI application built during a 24-hour hackathon. It leverages deep learning and modern web technologies to deliver powerful functionality through a sleek, responsive interface.
 
 ---
+### 🔹 Team
+- Musharaf-ul-islam
+- Mohammad Rehan 
+- Nathan Diniz
+- Shaikh-Suja-Rahaman
+
 
 ## 🧠 Tech Stack
 
