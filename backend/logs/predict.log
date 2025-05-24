@@ -1,0 +1,103 @@
+2025-05-25 01:57:50,258 - predict - INFO - Model loaded successfully
+2025-05-25 01:57:50,260 - predict - INFO - Loaded 101 class names
+2025-05-25 01:57:50,261 - predict - INFO - Nutrition data loaded successfully
+2025-05-25 01:58:53,859 - logics.squat_analysis - INFO - Received 6 keypoints for squat analysis
+2025-05-25 01:58:53,860 - logics.squat_analysis - INFO - Squat analysis result: {'knee_angle': 180, 'squat_depth': 'shallow', 'is_rep': False, 'feedback': 'Try to bend your knees more.', 'timestamp': '2025-05-24T20:28:53.860523'}
+2025-05-25 01:59:01,595 - logics.pushup_analysis - INFO - Received 6 keypoints for push-up analysis
+2025-05-25 01:59:01,595 - logics.pushup_analysis - INFO - Push-up analysis result: {'elbow_angle': 180, 'pushup_depth': 'shallow', 'is_rep': False, 'feedback': 'Go deeper — bend your elbows more.', 'timestamp': '2025-05-24T20:29:01.595481'}
+2025-05-25 01:59:06,562 - logics.plank_analysis - INFO - Received 6 keypoints for plank analysis
+2025-05-25 01:59:06,563 - logics.plank_analysis - WARNING - Zero magnitude detected in angle calculation
+2025-05-25 01:59:06,563 - logics.plank_analysis - WARNING - Zero magnitude detected in angle calculation
+2025-05-25 01:59:06,563 - logics.plank_analysis - INFO - Plank analysis result: {'body_angle': 0, 'form_quality': 'poor', 'feedback': 'Sagging or raised hips — align your body.', 'timestamp': '2025-05-24T20:29:06.563584'}
+2025-05-25 01:59:14,062 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-05-25 01:59:14,063 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-05-25 01:59:14,063 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:106]
+2025-05-25 01:59:14,063 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 01:59:14,063 - python_multipart.multipart - DEBUG - Calling on_header_field with data[108:120]
+2025-05-25 01:59:14,064 - python_multipart.multipart - DEBUG - Calling on_header_value with data[122:132]
+2025-05-25 01:59:14,064 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 01:59:14,064 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-05-25 01:59:14,065 - python_multipart.multipart - DEBUG - Calling on_part_data with data[136:114688]
+2025-05-25 01:59:14,066 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:68613]
+2025-05-25 01:59:14,067 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-05-25 01:59:14,067 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-05-25 01:59:14,068 - predict - INFO - Received file: pork.jpg
+2025-05-25 01:59:14,365 - predict - INFO - Prediction: {'food': 'macaroni_and_cheese', 'probability': 0.7503870725631714, 'calories': 250, 'protein': 8, 'carbs': 30, 'fat': 10}
+2025-05-25 01:59:24,788 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-05-25 01:59:24,788 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-05-25 01:59:24,789 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:109]
+2025-05-25 01:59:24,789 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 01:59:24,790 - python_multipart.multipart - DEBUG - Calling on_header_field with data[111:123]
+2025-05-25 01:59:24,790 - python_multipart.multipart - DEBUG - Calling on_header_value with data[125:135]
+2025-05-25 01:59:24,790 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 01:59:24,790 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-05-25 01:59:24,791 - python_multipart.multipart - DEBUG - Calling on_part_data with data[139:16384]
+2025-05-25 01:59:24,792 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:114688]
+2025-05-25 01:59:24,792 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:50913]
+2025-05-25 01:59:24,792 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-05-25 01:59:24,792 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-05-25 01:59:24,793 - predict - INFO - Received file: ravioli.jpg
+2025-05-25 01:59:24,995 - predict - INFO - Prediction: {'food': 'escargots', 'probability': 0.2838583290576935, 'calories': 100, 'protein': 15, 'carbs': 2, 'fat': 3}
+2025-05-25 01:59:42,671 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-05-25 01:59:42,671 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-05-25 01:59:42,672 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:109]
+2025-05-25 01:59:42,672 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 01:59:42,672 - python_multipart.multipart - DEBUG - Calling on_header_field with data[111:123]
+2025-05-25 01:59:42,672 - python_multipart.multipart - DEBUG - Calling on_header_value with data[125:135]
+2025-05-25 01:59:42,672 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 01:59:42,673 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-05-25 01:59:42,673 - python_multipart.multipart - DEBUG - Calling on_part_data with data[139:16384]
+2025-05-25 01:59:42,674 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:114688]
+2025-05-25 01:59:42,674 - python_multipart.multipart - DEBUG - Calling on_part_data with data[0:154892]
+2025-05-25 01:59:42,675 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-05-25 01:59:42,675 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-05-25 01:59:42,675 - predict - INFO - Received file: biryani.jpg
+2025-05-25 01:59:42,685 - PIL.TiffImagePlugin - DEBUG - tag: ImageDescription (270) - type: string (2) Tag Location: 22 - Data Location: 86 - value: <table: 189 bytes>
+2025-05-25 01:59:42,685 - PIL.TiffImagePlugin - DEBUG - tag: XResolution (282) - type: rational (5) Tag Location: 34 - Data Location: 276 - value: b'\x00\x00\x00H\x00\x00\x00\x01'
+2025-05-25 01:59:42,685 - PIL.TiffImagePlugin - DEBUG - tag: YResolution (283) - type: rational (5) Tag Location: 46 - Data Location: 284 - value: b'\x00\x00\x00H\x00\x00\x00\x01'
+2025-05-25 01:59:42,686 - PIL.TiffImagePlugin - DEBUG - tag: ResolutionUnit (296) - type: short (3) - value: b'\x00\x02'
+2025-05-25 01:59:42,686 - PIL.TiffImagePlugin - DEBUG - tag: Artist (315) - type: string (2) Tag Location: 70 - Data Location: 292 - value: b'mahitatavarty\x00'
+2025-05-25 01:59:42,686 - PIL.TiffImagePlugin - DEBUG - tag: YCbCrPositioning (531) - type: short (3) - value: b'\x00\x01'
+2025-05-25 01:59:42,865 - predict - INFO - Prediction: {'food': 'scallops', 'probability': 0.16945227980613708, 'calories': 100, 'protein': 20, 'carbs': 5, 'fat': 2}
+2025-05-25 01:59:55,591 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-05-25 01:59:55,591 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-05-25 01:59:55,591 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:126]
+2025-05-25 01:59:55,591 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 01:59:55,592 - python_multipart.multipart - DEBUG - Calling on_header_field with data[128:140]
+2025-05-25 01:59:55,592 - python_multipart.multipart - DEBUG - Calling on_header_value with data[142:152]
+2025-05-25 01:59:55,592 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 01:59:55,592 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-05-25 01:59:55,592 - python_multipart.multipart - DEBUG - Calling on_part_data with data[156:101368]
+2025-05-25 01:59:55,592 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-05-25 01:59:55,593 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-05-25 01:59:55,593 - predict - INFO - Received file: Andhra-Chicken-Curry-2-3.jpg
+2025-05-25 01:59:55,757 - predict - INFO - Prediction: {'food': 'french_onion_soup', 'probability': 0.811447024345398, 'calories': 150, 'protein': 5, 'carbs': 15, 'fat': 8}
+2025-05-25 02:00:49,343 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-05-25 02:00:49,343 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-05-25 02:00:49,344 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:126]
+2025-05-25 02:00:49,344 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 02:00:49,344 - python_multipart.multipart - DEBUG - Calling on_header_field with data[128:140]
+2025-05-25 02:00:49,344 - python_multipart.multipart - DEBUG - Calling on_header_value with data[142:152]
+2025-05-25 02:00:49,345 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 02:00:49,346 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-05-25 02:00:49,346 - python_multipart.multipart - DEBUG - Calling on_part_data with data[156:101368]
+2025-05-25 02:00:49,347 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-05-25 02:00:49,347 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-05-25 02:00:49,348 - predict - INFO - Received file: Andhra-Chicken-Curry-2-3.jpg
+2025-05-25 02:00:49,592 - predict - INFO - Prediction: {'food': 'french_onion_soup', 'probability': 0.811447024345398, 'calories': 150, 'protein': 5, 'carbs': 15, 'fat': 8}
+2025-05-25 02:02:37,570 - predict - INFO - Model loaded successfully
+2025-05-25 02:02:37,576 - predict - INFO - Loaded 101 class names
+2025-05-25 02:02:37,577 - predict - INFO - Nutrition data loaded successfully
+2025-05-25 02:02:47,889 - python_multipart.multipart - DEBUG - Calling on_part_begin with no data
+2025-05-25 02:02:47,890 - python_multipart.multipart - DEBUG - Calling on_header_field with data[42:61]
+2025-05-25 02:02:47,890 - python_multipart.multipart - DEBUG - Calling on_header_value with data[63:126]
+2025-05-25 02:02:47,891 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 02:02:47,891 - python_multipart.multipart - DEBUG - Calling on_header_field with data[128:140]
+2025-05-25 02:02:47,891 - python_multipart.multipart - DEBUG - Calling on_header_value with data[142:152]
+2025-05-25 02:02:47,891 - python_multipart.multipart - DEBUG - Calling on_header_end with no data
+2025-05-25 02:02:47,891 - python_multipart.multipart - DEBUG - Calling on_headers_finished with no data
+2025-05-25 02:02:47,892 - python_multipart.multipart - DEBUG - Calling on_part_data with data[156:101368]
+2025-05-25 02:02:47,892 - python_multipart.multipart - DEBUG - Calling on_part_end with no data
+2025-05-25 02:02:47,892 - python_multipart.multipart - DEBUG - Calling on_end with no data
+2025-05-25 02:02:47,895 - predict - INFO - Received file: Andhra-Chicken-Curry-2-3.jpg
+2025-05-25 02:02:48,314 - predict - INFO - Prediction: {'food': 'french_onion_soup', 'probability': 0.811447024345398, 'calories': 150, 'protein': 5, 'carbs': 15, 'fat': 8}
