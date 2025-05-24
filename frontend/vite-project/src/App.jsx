@@ -7,6 +7,7 @@ import About from './components/About';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import Ultra from './components/Ultra';
+import LoginModal from './LoginModal';
 // import './styles/globals.css';
 
 function App() {
@@ -14,8 +15,11 @@ function App() {
     <div className="min-h-screen bg-gradient-to-bl from-black to-purple-950">
       <Header />
       <Ultra/>
+
+
+
       {/* <Hero /> */}
-      
+
       {/* <Features />
       <About />
       <CTA />

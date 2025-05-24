@@ -18,8 +18,8 @@ const Header = () => {
 
           <div className="hidden md:flex items-center space-x-4 ">
             <button className="text-purple-400 hover:text-white transition-colors">Home</button>
-            <button className="text-purple-400 hover:text-white transition-colors">Sign Up</button>
             <button className="text-purple-400 hover:text-white transition-colors">Log In</button>
+
           <div className='rounded-full h-10 w-10 flex justify-center items-center border-gray-300 border-2'>
           <button
             className="text-gray-300 "
