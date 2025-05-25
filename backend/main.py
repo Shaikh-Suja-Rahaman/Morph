@@ -15,7 +15,11 @@ app = FastAPI()
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:3000", "http://localhost:5173", "http://127.0.0.1:8000"],  # Adjust as needed
+    allow_origins=[
+        "http://localhost:5173", 
+        "http://127.0.0.1:8000",
+        "https://morph-ruddy.vercel.app/"
+    ],
     allow_credentials=True,
     allow_methods=["*"],  # Allows all HTTP methods (GET, POST, etc.)
     allow_headers=["*"],  # Allows all headers
