@@ -1,11 +1,13 @@
 import React from 'react';
 import { Camera, ChevronRight, Utensils, Scan, BarChart3 } from 'lucide-react';
-// import { useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import MealLogingPage from '../components/SnapToTrack/MealLoggingPage';
 
 export default function ImageDetectionCard() {
+  const navigate = useNavigate();
+
   const routeToImageUpload = () => {
-    window.location.href = '/meal-logging-page';
+    navigate('/meal-logging-page');
   };
 
   return (
