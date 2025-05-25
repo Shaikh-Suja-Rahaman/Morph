@@ -13,6 +13,7 @@ import WorkoutSelector from './components/pose_detection/WorkoutSelector';
 import PoseDetector from './components/pose_detection/PoseDetector';
 // import './styles/globals.css';
 import FeatureCards from './components/Feature/FeatureCard';
+import MealLogingPage from './components/SnapToTrack/MealLoggingPage';
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/pushup" element={<PoseDetector exercise="pushup" />} />
         <Route path="/squat" element={<PoseDetector exercise="squat" />} />
         <Route path="/plank" element={<PoseDetector exercise="plank" />} />
+        <Route path='/meal-logging-page' element={<MealLogingPage />} />
         </Routes>
       </div>
     </Router>

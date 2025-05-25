@@ -1,9 +1,12 @@
 import React from 'react';
 import { Camera, ChevronRight, Utensils, Scan, BarChart3 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom'
+import MealLogingPage from '../components/SnapToTrack/MealLoggingPage';
 
 export default function ImageDetectionCard() {
-  const navigate = useNavigate();
+  const routeToImageUpload = () => {
+    window.location.href = '/meal-logging-page';
+  };
 
   return (
     <div className="group mt-14 min-h-[550px] w-full max-w-md bg-gradient-to-b from-purple-950/30 to-black/30 backdrop-blur-md
@@ -71,7 +74,7 @@ export default function ImageDetectionCard() {
       {/* Button - Updated with Lucide Camera icon */}
       <div className="p-8 pt-0 relative z-10">
         <button className="bg-purple-950/60 text-gray-200 px-10 py-2 text-lg font-medium rounded-lg cursor-pointer transition-all duration-300 backdrop-blur-sm hover:bg-purple-900/60 hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-900/40 border border-purple-800/20"
-        onClick={() => navigate('/image-upload')}
+        onClick={routeToImageUpload}
         >
             Snap To Track
           </button>
