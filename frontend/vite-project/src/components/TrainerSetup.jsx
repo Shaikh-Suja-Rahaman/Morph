@@ -1,0 +1,69 @@
+import { useState } from 'react'
+import { supabase } from './supabaseClient'
+
+export default function TrainerSetup({ user, onComplete }) {
+  const [trainerName, setTrainerName] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setError(null)
+
+    try {
+      const { error } = await supabase
+        .from('profiles')
+        .update({
+          trainer_name: trainerName,
+          updated_at: new Date().toISOString()
+        })
+        .eq('id', user.id)
+
+      if (error) throw error
+
+      onComplete()
+    } catch (error) {
+      setError(error.message)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col space-y-6 w-full max-w-md mx-auto p-8">
+      <h2 className="text-3xl font-semibold text-white text-center mb-2">Add Your Trainer</h2>
+
+      {error && (
+        <div className="bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-lg text-sm">
+          {error}
+        </div>
+      )}
+
+      <div className="space-y-4">
+        <input
+          type="text"
+          placeholder="Trainer Name"
+          value={trainerName}
+          onChange={(e) => setTrainerName(e.target.value)}
+          required
+          className="w-full px-4 py-3 rounded-lg bg-white/5 border border-purple-500/20
+          text-white placeholder-white/40 focus:outline-none focus:border-purple-500/50
+          focus:ring-1 focus:ring-purple-500/30 transition-all duration-200"
+        />
+      </div>
+
+      <button
+        type="submit"
+        disabled={loading}
+        className={`w-full py-3 px-6 rounded-lg bg-gradient-to-r from-purple-600 to-purple-800
+        text-white font-medium text-sm transition-all duration-200 transform
+        hover:translate-y-[-1px] hover:shadow-lg hover:shadow-purple-500/25
+        disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0
+        ${loading ? 'animate-pulse' : ''}`}
+      >
+        {loading ? 'Saving...' : 'Save Trainer'}
+      </button>
+    </form>
+  )
+}
