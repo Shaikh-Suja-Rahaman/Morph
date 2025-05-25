@@ -1,13 +1,42 @@
-import React from 'react';
+import React,{useEffect, useState} from 'react';
 import fitnessImg from '../assets/fitness.png';
 // import Carousel from '../Carousel/Carousel'
 import ReviewCarousel from './ReviewCarousel';
+// import { Navigate } from 'react-router-dom';
+import { supabase } from './supabaseClient';
+
 
 const Ultra = () => {
+  const [profile, setProfile] = useState(null);
 
+  const fetchProfile = async (userId) => {
+      const { data } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', userId)
+        .single();
+      if (data) setProfile(data);
+    };
 
+  useEffect(() => {
+      // Check auth state
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        setSession(session);
+        if (session) fetchProfile(session.user.id);
+      });
+
+      // Listen for auth changes
+      const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
+        setSession(session);
+        if (session) fetchProfile(session.user.id);
+      });
+
+      return () => subscription.unsubscribe();
+    }, []);
+
+  const [session, setSession] = useState(null);
   const reviews = [
-  
+
     {
       id: 2,
       name: "Michael Chen",
@@ -38,36 +67,50 @@ const Ultra = () => {
   ];
 
   return (
-    <div className="w-screen h-screen flex items-center justify-center p-0 m-0">
-      <div className="flex items-center justify-between w-[95%] max-w-7xl gap-20">
-        {/* Text Section */}
-        <div className="flex-1 max-w-xl">
-          <h1 className="text-7xl font-bold text-white leading-[1.1] mb-8 tracking-tight">
+    <div className="relative w-full min-h-screen overflow-x-hidden flex items-center justify-center">
+      <div className="w-[95%] max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8 md:gap-20 py-20">
+        {/* Left Content */}
+        <div className="flex-1 max-w-xl px-4 md:px-0">
+          <h1 className="text-5xl md:text-7xl font-bold text-white leading-[1.1] mb-8 tracking-tight">
             Track your fitness smarter
             <br />
-            <span className="bg-gradient-to-r text-6xl from-purple-400 to-purple-200 bg-clip-text text-transparent">
-            From Posture to Plate
+            <span className="bg-gradient-to-r text-4xl md:text-6xl from-purple-400 to-purple-200 bg-clip-text text-transparent">
+              From Posture to Plate
             </span>
-            <br />
-
           </h1>
 
           <p className="text-lg text-purple-200/80 mb-10 leading-relaxed max-w-lg">
             From perfect form to precise nutrition tracking, elevate your fitness game with AI-powered insights.
           </p>
 
-          <button className="bg-purple-950/60 text-gray-200 px-10 py-4 text-lg font-medium rounded-lg cursor-pointer transition-all duration-300 backdrop-blur-sm hover:bg-purple-900/60 hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-900/40 border border-purple-800/20">
-            Get Started →
+          <button className="bg-purple-950/60 text-gray-200 px-10 py-4 text-lg font-medium rounded-lg cursor-pointer transition-all duration-300 backdrop-blur-sm hover:bg-purple-900/60 hover:text-white hover:-translate-y-1 hover:shadow-lg hover:shadow-purple-900/40 border border-purple-800/20"
+          onClick=
+            {session ? (
+                <button
+                  className="text-purple-400 hover:text-white transition-colors"
+                  onClick={() => navigate('/dashboard')}
+                >
+                  Dashboard
+                </button>
+              ) : (
+                <button
+                  className="text-purple-400 hover:text-white transition-colors"
+                  onClick={() => setIsLoginModalOpen(true)}
+                >
+                  Log In
+                </button>
+              )}
+
+          >
+            Get Started!
           </button>
         </div>
 
-        {/* Image Section with Overlapping Carousel */}
-        <div className="relative flex-1 flex justify-center items-center">
-          {/* Main Image Container */}
-          <div className="w-[40vw] h-[65vh] bg-black/70 rounded-2xl flex items-center justify-center backdrop-blur-sm overflow-hidden relative
-            shadow-[0_0_50px_-12px] shadow-purple-900/50
-            ring-1 ring-purple-950/50
-            after:absolute after:inset-0 after:rounded-2xl after:shadow-[inset_0_0_40px_rgba(0,0,0,0.6)]">
+        {/* Right Image Section */}
+        <div className="relative flex-1 w-full max-w-2xl">
+          <div className="w-full aspect-[4/3] bg-black/70 rounded-2xl flex items-center justify-center
+            backdrop-blur-sm overflow-hidden relative shadow-[0_0_50px_-12px] shadow-purple-900/50
+            ring-1 ring-purple-950/50">
             <img
               src={fitnessImg}
               alt="Fitness"
@@ -80,17 +123,16 @@ const Ultra = () => {
 
           </div>
 
-          {/* Overlapping Carousel */}
-          <div className="scale-90 absolute bottom-0 right-50 translate-y-1/4 w-full max-w-[80%] z-10">
+          {/* Carousel */}
+          <div className="absolute -bottom-10 left-1/4 -translate-x-1/2 w-[90%] max-w-xl">
             <ReviewCarousel
-          reviews={reviews}
-          autoplay={true}
-          autoplayDelay={5000}
-          pauseOnHover={true}
-          showDots={true}
-          showArrows={true}
-        />
-
+              reviews={reviews}
+              autoplay={true}
+              autoplayDelay={5000}
+              pauseOnHover={true}
+              showDots={true}
+              showArrows={true}
+            />
           </div>
         </div>
       </div>

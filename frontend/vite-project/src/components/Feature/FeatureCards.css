@@ -1,0 +1,75 @@
+.feature-cards-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 1rem;
+  position: relative; /* Added for z-index context */
+  z-index: 1; /* Ensure the container is above other potential background elements */
+}
+
+.feature-cards-heading {
+  font-size: 2.5rem; /* Slightly increased heading size */
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 3.5rem; /* Increased bottom margin */
+  color: #ffffff; /* Changed color to white */
+  position: relative; /* Added for z-index context */
+  z-index: 2; /* Ensure the heading is above other potential elements */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Added text shadow for better visibility */
+}
+
+.feature-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* Equivalent to grid-cols-1 */
+  gap: 2rem; /* Equivalent to gap-8 */
+}
+
+@media (min-width: 768px) {
+  .feature-cards-grid {
+    grid-template-columns: repeat(3, 1fr); /* Equivalent to md:grid-cols-3 */
+  }
+}
+
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  /* Removed align-items: center; to allow text to be left-aligned below image */
+  padding: 0; /* Removed padding from card to let image go to edges */
+  background-color: #3c0a6b; /* Darker purple background */
+  border-radius: 0.75rem; /* Slightly larger border radius */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+  color: #dcdcdc; /* Light gray text color */
+  overflow: hidden; /* Hide overflow for rounded corners on image */
+  text-align: left; /* Align text to the left */
+}
+
+.feature-card-image {
+  width: 100%;
+  height: 180px; /* Slightly increased image height */
+  object-fit: cover;
+  /* Removed margin-bottom from image */
+  border-radius: 0.75rem 0.75rem 0 0; /* Rounded top corners matching card */
+}
+
+.feature-card-content {
+  padding: 1.5rem; /* Added padding for content below image */
+}
+
+.feature-card-title {
+  font-size: 1.5rem; /* Increased font size */
+  font-weight: 700; /* Bolder font weight */
+  margin-bottom: 0.5rem; /* Adjusted bottom margin */
+  color: #ede9fe; /* Light purple color for title */
+}
+
+.feature-card-description {
+  color: #dcdcdc; /* Light gray text color */
+  text-align: left; /* Align text to the left */
+  font-size: 1rem; /* Adjusted font size */
+}
+
+.feature-cards-footer-text {
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 1.25rem;
+  color: #ede9fe; /* Light purple color */
+}
