@@ -6,7 +6,7 @@ import ProfileSetup from './components/ProfileSetup'
 import TrainerSetup from './components/TrainerSetup'
 import './App.css'
 
-export default function LoginModal() {
+export default function LoginModal({ isOpen, onClose }) {
   const [session, setSession] = useState(null)
   const [profile, setProfile] = useState(null)
   const [showSignUp, setShowSignUp] = useState(false)
@@ -74,73 +74,71 @@ export default function LoginModal() {
     return <div className="loading">Loading...</div>
   }
 
-  // Not authenticated
-  if (!session) {
-    return (
-      <div className="auth-container">
-        {showSignUp ? (
-          <div>
-            <SignUp onSuccess={() => setShowSignUp(false)} />
-            <p>
-              Already have an account?{' '}
-              <button onClick={() => setShowSignUp(false)}>Login</button>
-            </p>
+  if (!isOpen) return null;
+
+  return (
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal-content" onClick={e => e.stopPropagation()}>
+        <button className="modal-close" onClick={onClose}>×</button>
+
+        {loading ? (
+          <div className="modal-loading">Loading...</div>
+        ) : !session ? (
+          <div className="modal-auth">
+            {showSignUp ? (
+              <div className="modal-section">
+                <SignUp onSuccess={() => setShowSignUp(false)} />
+                <p className="modal-switch">
+                  Already have an account?{' '}
+                  <button onClick={() => setShowSignUp(false)}>Login</button>
+                </p>
+              </div>
+            ) : (
+              <div className="modal-section">
+                <Login onSuccess={onClose} />
+                <p className="modal-switch">
+                  Don't have an account?{' '}
+                  <button onClick={() => setShowSignUp(true)}>Sign Up</button>
+                </p>
+              </div>
+            )}
+          </div>
+        ) : needsProfileSetup ? (
+          <div className="modal-section">
+            <ProfileSetup
+              user={session.user}
+              onComplete={() => setNeedsProfileSetup(false)}
+            />
+          </div>
+        ) : needsTrainerSetup ? (
+          <div className="modal-section">
+            <TrainerSetup
+              user={session.user}
+              onComplete={() => setNeedsTrainerSetup(false)}
+            />
           </div>
         ) : (
-          <div>
-            <Login onSuccess={() => {}} />
-            <p>
-              Don't have an account?{' '}
-              <button onClick={() => setShowSignUp(true)}>Sign Up</button>
-            </p>
+          <div className="modal-dashboard">
+            <h1>Welcome, {profile?.username}!</h1>
+            <div className="profile-info">
+              <h2>Your Profile</h2>
+              <p><strong>Height:</strong> {profile?.height} cm</p>
+              <p><strong>Weight:</strong> {profile?.weight} kg</p>
+              <p><strong>Age:</strong> {profile?.age} years</p>
+              <p><strong>Trainer:</strong> {profile?.trainer_name}</p>
+            </div>
+            <div className="modal-actions">
+              <button onClick={() => setNeedsProfileSetup(true)}>
+                Edit Profile
+              </button>
+              <button onClick={() => setNeedsTrainerSetup(true)}>
+                Change Trainer
+              </button>
+              <button onClick={handleSignOut}>Sign Out</button>
+            </div>
           </div>
         )}
       </div>
-    )
-  }
-
-  // Authenticated but needs profile setup
-  if (needsProfileSetup) {
-    return (
-      <div className="profile-container">
-        <ProfileSetup
-          user={session.user}
-          onComplete={() => setNeedsProfileSetup(false)}
-        />
-      </div>
-    )
-  }
-
-  // Authenticated but needs trainer setup
-  if (needsTrainerSetup) {
-    return (
-      <div className="profile-container">
-        <TrainerSetup
-          user={session.user}
-          onComplete={() => setNeedsTrainerSetup(false)}
-        />
-      </div>
-    )
-  }
-
-  // Authenticated with complete profile
-  return (
-    <div className="dashboard">
-      <h1>Welcome, {profile?.username}!</h1>
-      <div className="profile-info">
-        <h2>Your Profile</h2>
-        <p><strong>Height:</strong> {profile?.height} cm</p>
-        <p><strong>Weight:</strong> {profile?.weight} kg</p>
-        <p><strong>Age:</strong> {profile?.age} years</p>
-        <p><strong>Trainer:</strong> {profile?.trainer_name}</p>
-      </div>
-      <button onClick={() => setNeedsProfileSetup(true)}>
-        Edit Profile
-      </button>
-      <button onClick={() => setNeedsTrainerSetup(true)}>
-        Change Trainer
-      </button>
-      <button onClick={handleSignOut}>Sign Out</button>
     </div>
-  )
+  );
 }
