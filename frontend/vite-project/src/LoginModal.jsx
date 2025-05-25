@@ -78,7 +78,7 @@ export default function LoginModal({ isOpen, onClose }) {
 
   return (
     <div className="modal-overlay" onClick={onClose}>
-      <div className="modal-content" onClick={e => e.stopPropagation()}>
+      <div className="modal-content max-w-7xl w-[95vw] mx-auto" onClick={e => e.stopPropagation()}>
         <button className="modal-close" onClick={onClose}>×</button>
 
         {loading ? (
@@ -118,23 +118,63 @@ export default function LoginModal({ isOpen, onClose }) {
             />
           </div>
         ) : (
-          <div className="modal-dashboard">
-            <h1>Welcome, {profile?.username}!</h1>
-            <div className="profile-info">
-              <h2>Your Profile</h2>
-              <p><strong>Height:</strong> {profile?.height} cm</p>
-              <p><strong>Weight:</strong> {profile?.weight} kg</p>
-              <p><strong>Age:</strong> {profile?.age} years</p>
-              <p><strong>Trainer:</strong> {profile?.trainer_name}</p>
+          <div className="modal-dashboard p-6 text-center">
+            <h1 className="text-3xl font-bold text-white mb-8">
+              Welcome, {profile?.username}!
+            </h1>
+
+            <div className="grid grid-cols-2 gap-4 mb-8">
+              <div className="bg-white/5 rounded-xl p-4 backdrop-blur-sm border border-purple-500/20">
+                <div className="text-purple-300 text-sm mb-1">Height</div>
+                <div className="text-white text-lg font-semibold">{profile?.height} cm</div>
+              </div>
+
+              <div className="bg-white/5 rounded-xl p-4 backdrop-blur-sm border border-purple-500/20">
+                <div className="text-purple-300 text-sm mb-1">Weight</div>
+                <div className="text-white text-lg font-semibold">{profile?.weight} kg</div>
+              </div>
+
+              <div className="bg-white/5 rounded-xl p-4 backdrop-blur-sm border border-purple-500/20">
+                <div className="text-purple-300 text-sm mb-1">Age</div>
+                <div className="text-white text-lg font-semibold">{profile?.age} years</div>
+              </div>
+
+              <div className="bg-white/5 rounded-xl p-4 backdrop-blur-sm border border-purple-500/20">
+                <div className="text-purple-300 text-sm mb-1">Trainer</div>
+                <div className="text-white text-lg font-semibold">{profile?.trainer_name}</div>
+              </div>
             </div>
-            <div className="modal-actions">
-              <button onClick={() => setNeedsProfileSetup(true)}>
+
+            <div className="flex flex-col gap-3 items-center">
+              <button
+                onClick={() => setNeedsProfileSetup(true)}
+                className="w-48 py-2 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-purple-800
+                  text-white font-medium text-sm transition-all duration-200
+                  hover:translate-y-[-1px] hover:shadow-lg hover:shadow-purple-500/25
+                  border border-purple-500/20"
+              >
                 Edit Profile
               </button>
-              <button onClick={() => setNeedsTrainerSetup(true)}>
+
+              <button
+                onClick={() => setNeedsTrainerSetup(true)}
+                className="w-48 py-2 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-purple-800
+                  text-white font-medium text-sm transition-all duration-200
+                  hover:translate-y-[-1px] hover:shadow-lg hover:shadow-purple-500/25
+                  border border-purple-500/20"
+              >
                 Change Trainer
               </button>
-              <button onClick={handleSignOut}>Sign Out</button>
+
+              <button
+                onClick={handleSignOut}
+                className="w-48 py-2 px-4 rounded-lg bg-red-500/10 text-red-400
+                  font-medium text-sm transition-all duration-200
+                  hover:bg-red-500/20 hover:translate-y-[-1px]
+                  border border-red-500/20 hover:border-red-500/30"
+              >
+                Sign Out
+              </button>
             </div>
           </div>
         )}
