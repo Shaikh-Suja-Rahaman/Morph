@@ -37,6 +37,11 @@ const Header = () => {
     if (data) setProfile(data);
   };
 
+  const handleEditProfile = () => {
+    setIsLoginModalOpen(true);
+    setIsMenuOpen(false);
+  };
+
   return (
     <>
       <header className="fixed top-6 left-0 w-full z-50 flex justify-center pointer-events-none">
@@ -91,12 +96,20 @@ const Header = () => {
                         <p>Trainer: {profile?.trainer_name}</p>
                       </div>
                       <hr className="border-purple-950/40" />
-                      <button
-                        onClick={() => supabase.auth.signOut()}
-                        className="text-red-400 hover:text-red-300 text-sm"
-                      >
-                        Sign Out
-                      </button>
+                      <div className="flex justify-between items-center">
+                        <button
+                          onClick={handleEditProfile}
+                          className="text-purple-400 hover:text-purple-300 text-sm"
+                        >
+                          Edit Profile
+                        </button>
+                        <button
+                          onClick={() => supabase.auth.signOut()}
+                          className="text-red-400 hover:text-red-300 text-sm"
+                        >
+                          Sign Out
+                        </button>
+                      </div>
                     </div>
                   </div>
                 )}

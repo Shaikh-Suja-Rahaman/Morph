@@ -2,12 +2,17 @@ import { useState } from 'react'
 import { supabase } from './supabaseClient'
 
 export default function TrainerSetup({ user, onComplete }) {
-  const [trainerName, setTrainerName] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [selectedTrainer, setSelectedTrainer] = useState(null)
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const trainers = [
+    { id: 1, name: "Bob", specialty: "Strength Training" },
+    { id: 2, name: "Henry", specialty: "HIIT & Cardio" },
+    { id: 3, name: "Kenny", specialty: "Nutrition & Wellness" }
+  ]
+
+  const handleTrainerSelect = async (trainerName) => {
     setLoading(true)
     setError(null)
 
@@ -31,8 +36,8 @@ export default function TrainerSetup({ user, onComplete }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col space-y-6 w-full max-w-md mx-auto p-8">
-      <h2 className="text-3xl font-semibold text-white text-center mb-2">Add Your Trainer</h2>
+    <div className="flex flex-col space-y-6 w-full max-w-xl mx-auto p-8">
+      <h2 className="text-3xl font-semibold text-white text-center mb-6">Choose Your Trainer</h2>
 
       {error && (
         <div className="bg-red-500/10 border border-red-500/20 text-red-400 px-4 py-3 rounded-lg text-sm">
@@ -40,30 +45,40 @@ export default function TrainerSetup({ user, onComplete }) {
         </div>
       )}
 
-      <div className="space-y-4">
-        <input
-          type="text"
-          placeholder="Trainer Name"
-          value={trainerName}
-          onChange={(e) => setTrainerName(e.target.value)}
-          required
-          className="w-full px-4 py-3 rounded-lg bg-white/5 border border-purple-500/20
-          text-white placeholder-white/40 focus:outline-none focus:border-purple-500/50
-          focus:ring-1 focus:ring-purple-500/30 transition-all duration-200"
-        />
-      </div>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {trainers.map((trainer) => (
+          <div
+            key={trainer.id}
+            className={`relative bg-white/5 backdrop-blur-sm rounded-xl p-6 border-2 transition-all duration-200
+              ${selectedTrainer === trainer.name
+                ? 'border-purple-500/50 bg-white/10'
+                : 'border-purple-500/20 hover:border-purple-500/30 hover:bg-white/8'}`}
+          >
+            <div className="flex flex-col items-center text-center space-y-4">
+              <div className="w-20 h-20 rounded-full bg-purple-900/30 flex items-center justify-center">
+                <span className="text-2xl font-bold text-purple-300">{trainer.name[0]}</span>
+              </div>
 
-      <button
-        type="submit"
-        disabled={loading}
-        className={`w-full py-3 px-6 rounded-lg bg-gradient-to-r from-purple-600 to-purple-800
-        text-white font-medium text-sm transition-all duration-200 transform
-        hover:translate-y-[-1px] hover:shadow-lg hover:shadow-purple-500/25
-        disabled:opacity-70 disabled:cursor-not-allowed disabled:hover:translate-y-0
-        ${loading ? 'animate-pulse' : ''}`}
-      >
-        {loading ? 'Saving...' : 'Save Trainer'}
-      </button>
-    </form>
+              <div className="space-y-2">
+                <h3 className="text-xl font-semibold text-white">{trainer.name}</h3>
+                <p className="text-sm text-purple-200/70">{trainer.specialty}</p>
+              </div>
+
+              <button
+                onClick={() => handleTrainerSelect(trainer.name)}
+                disabled={loading}
+                className={`w-full py-2 px-4 rounded-lg bg-gradient-to-r from-purple-600 to-purple-800
+                  text-white font-medium text-sm transition-all duration-200 transform
+                  hover:translate-y-[-1px] hover:shadow-lg hover:shadow-purple-500/25
+                  disabled:opacity-70 disabled:cursor-not-allowed
+                  ${loading ? 'animate-pulse' : ''}`}
+              >
+                {loading && selectedTrainer === trainer.name ? 'Selecting...' : 'Select Trainer'}
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 }
