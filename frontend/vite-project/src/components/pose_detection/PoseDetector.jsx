@@ -4,6 +4,7 @@ import * as tf from "@tensorflow/tfjs";
 import * as posedetection from "@tensorflow-models/pose-detection";
 
 const speakFeedback = (text) => {
+  // asdasd
   const utterance = new SpeechSynthesisUtterance(text);
   window.speechSynthesis.speak(utterance);
 };
