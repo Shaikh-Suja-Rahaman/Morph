@@ -7,15 +7,7 @@ const Ultra = () => {
 
 
   const reviews = [
-    {
-      id: 1,
-      name: "Sarah Johnson",
-      role: "Fitness Enthusiast",
-      company: "Tech Corp",
-      content: "Morph completely transformed my workout routine! The form correction feature helped me avoid injuries and maximize my gains. I've never felt more confident in the gym.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face"
-    },
+  
     {
       id: 2,
       name: "Michael Chen",
